@@ -6,7 +6,7 @@ angular.module('placeApp').controller('UserController',['$mdDialog', '$mdToast',
         console.log('inside getStuff function');
         $http({
             method: 'GET',
-            url: '/stuff'
+            url: '/apiRoute'
         }).then(function(response) {
             console.log(response);
         }).catch(function(error) {

@@ -16,13 +16,11 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
 
         auth.createUserWithEmailAndPassword(email, password)
             .then(function(firebaseUser) {
-                console.log('user', firebaseUser);
                 $location.path('/userView');
                 // Solution to $location not changing the path
                 // Found in this thread: https://stackoverflow.com/questions/11784656/angularjs-location-not-changing-the-path
                 $scope.$apply();
             }).catch(function(error) {
-
                 $mdDialog.show(
                     $mdDialog.alert()
                         .parent(angular.element(document.querySelector('#popupContainer')))
@@ -32,19 +30,16 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
                         .ariaLabel('Password Error Dialog')
                         .ok('Ok')
                 );
-            
         });
     }
 
     self.login = () => {
-        console.log('login button clicked');
         
         let loginEmail = self.loginEmail;
         let loginPassword = self.loginPassword;
 
         auth.signInWithEmailAndPassword(loginEmail, loginPassword)
             .then(function(firebaseUser) {
-                console.log('successful');
                 $location.path('/userView')
                 $scope.$apply();
             })
@@ -65,7 +60,6 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
     self.logout = () => {
         auth.signOut()
             .then(function() {
-                console.log('successfully logged out');
                 self.user = '';
                 $location.path('/');
                 $scope.$apply();
@@ -78,7 +72,6 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
                 
             })
             .catch(function(error) {
-                console.log('Error signing out', error);
                 $mdDialog.show(
                     $mdDialog.alert()
                       .parent(angular.element(document.querySelector('#popupContainer')))
