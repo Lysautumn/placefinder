@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.module.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,8 @@
     "angular-material": "^1.1.8",
     "angular-messages": "^1.6.9",
     "angular-route": "^1.6.9",
-    "angularfire": "^2.3.0"
+    "angularfire": "^2.3.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
   }
 }

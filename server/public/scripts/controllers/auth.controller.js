@@ -1,14 +1,14 @@
-angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast', function($mdDialog, $mdToast) {
+angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast', '$location', '$scope', function($mdDialog, $mdToast, $location, $scope) {
     console.log('Auth Controller');
     let self = this;
     let auth = firebase.auth();
 
     self.move = () => {
-        window.location = '/register';
+       $location.path('/register');
     }
 
     self.back = () => {
-        window.location = '/';
+        $location.path('/');
     }
 
     self.registerUser = (email, password) => {
@@ -17,7 +17,10 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
         auth.createUserWithEmailAndPassword(email, password)
             .then(function(firebaseUser) {
                 console.log('user', firebaseUser);
-                window.location = '/userView';
+                $location.path('/userView');
+                // Solution to $location not changing the path
+                // Found in this thread: https://stackoverflow.com/questions/11784656/angularjs-location-not-changing-the-path
+                $scope.$apply();
             }).catch(function(error) {
 
                 $mdDialog.show(
@@ -42,8 +45,10 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
         auth.signInWithEmailAndPassword(loginEmail, loginPassword)
             .then(function(firebaseUser) {
                 console.log('successful');
-                window.location = '/userView';
-            }).catch(function(error) {
+                $location.path('/userView')
+                $scope.$apply();
+            })
+            .catch(function(error) {
                 $mdDialog.show(
                     $mdDialog.alert()
                         .parent(angular.element(document.querySelector('#popupContainer')))
@@ -54,6 +59,7 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
                         .ok('Ok')
                 );
             });
+            
     }
 
     self.logout = () => {
@@ -61,7 +67,8 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
             .then(function() {
                 console.log('successfully logged out');
                 self.user = '';
-                window.location('index.html');
+                $location.path('/');
+                $scope.$apply();
                 $mdToast.show(
                     $mdToast.simple()
                       .textContent('Successfully Logged Out')
