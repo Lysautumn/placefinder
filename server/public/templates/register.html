@@ -1,11 +1,47 @@
-<h1>This the register page</h1>
+<md-whiteframe flex="40" layout="column" id="registerBox" class="md-whiteframe-2dp">
+    <md-content flex layout="column" id="registerForm">
+        <h4 id="registerHeading">Register</h4>
+        <md-input-container md-no-float class="md-block">
+            <label>Email</label>
+            <input type="email" ng-model="ac.userEmail">
+        </md-input-container>
+        <md-input-container>
+            <label>Password</label>
+            <input type="password" ng-model="ac.userPassword">
+        </md-input-container>
+        <br>
+        <md-button class="md-raised md-primary" ng-click="ac.registerUser(ac.userEmail, ac.userPassword)">Register</md-button>
+        <md-button class="md-raised" ng-click="ac.back()">Back</md-button>
+    </md-content>
+</md-whiteframe>
 
-<div>
+<!-- <div>
     <form>
-        <input type="email" ng-model="ac.userEmail">
-        <input type="password" ng-model="ac.userPassword">
-        <md-button class="md-raised" ng-click="ac.registerUser(ac.userEmail, ac.userPassword)">Register</md-button>
+        
+        
+        
     </form>
-    <md-button class="md-raised" ng-click="ac.back()">Back</md-button>
+    
 </div>
 
+
+<md-whiteframe flex="40" layout="column" id="formBox" class="md-whiteframe-2dp">
+        <md-content flex layout="column" id="loginForm">
+            <md-input-container md-no-float class="md-block">
+                <label>Email</label>
+                <input type="email" ng-model="ac.loginEmail">
+            </md-input-container>
+            <md-input-container md-no-float class="md-block">
+                <label>Password</label>
+                <input type="password" ng-model="ac.loginPassword">
+            </md-input-container>
+            <br>
+            <md-button class="md-raised md-primary" ng-click="ac.login()">Login</md-button>
+            <md-button class="md-raised" ng-click="ac.move()">Register</md-button>
+        </md-content>
+    </md-whiteframe>
+    
+        
+    
+    
+ -->

@@ -1,9 +1,45 @@
+/* Header */
+header {
+    background-color: royalblue;
+    height: 100px;
+}
 
+h1 {
+    padding-top: 10px;
+    color: white;
+    text-align: center;
+}
 /* Forms */
-.forms {
+#formBox, #registerBox, #searchBox {
     background-color: white;
     height: 400px;
-    width: 50%;
     margin: 100px auto 0 auto;
+    padding: 5px;
     border-radius: 3px;
 }
+
+#searchBox {
+    height: 250px;
+}
+
+#loginForm, #registerForm, #searchForm {
+    padding-top: 10px;
+}
+
+#loginHeading, #registerHeading, #searchHeading {
+    text-align: center;
+}
+
+/* Results */
+#searchResults {
+    width: 50%;
+    margin: 0 auto;
+}
+
+ul {
+    list-style-type: none;
+}
+.venueName {
+    font-weight: bold;
+}
+

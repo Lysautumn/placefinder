@@ -1,3 +1,29 @@
-<h1>This is where the user will go when they are logged in</h1>
+<div ng-controller="AuthController as ac">
+        <md-button class="md-raised md-primary" ng-click="ac.logout()">Log Out</md-button>
+</div>
 
-<md-button class="md-raised md-primary" ng-click="uc.getStuff()">Get Stuff</md-button>
+
+
+<md-whiteframe flex="50" layout="column" id="searchBox" class="md-whiteframe-2dp">
+    <md-content flex layout="column" id="searchForm">
+        <h4 id="searchHeading">Search</h4>
+        <md-input-container md-no-float class="md-block">
+            <label>Category</label>
+            <md-select ng-model="uc.userOption">
+                <md-option ng-repeat="option in uc.searchOptions" ng-value="option">{{option}}</md-option>
+            </md-select>
+        </md-input-container>
+        <br>
+        <md-button class="md-raised md-primary" ng-click="uc.search()">Search</md-button>
+    </md-content>
+</md-whiteframe>
+<div flex layout="column" id="searchResults">
+    <ul>
+        <ul ng-repeat="place in uc.searchResults">
+            <li class="venueName">{{place.venue.name}}</li>
+            <li>{{place.venue.location.address}}</li>
+            <br>
+        </ul>
+    </ul>
+</div>
+
