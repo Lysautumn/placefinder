@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const apiRouter = require('./routes/api.router');
 
-let port = 5000;
+let port = 5000 || process.env.PORT;
 
 app.use(bodyParser.json());
 app.use(express.static('server/public'));
