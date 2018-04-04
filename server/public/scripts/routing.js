@@ -1,6 +1,5 @@
 angular.module('placeApp')
     .config(function($routeProvider, $locationProvider) {
-    // This is where routing will go
     $routeProvider.when('/', {
         templateUrl: 'templates/landing.html',
         controller: 'AuthController as ac'

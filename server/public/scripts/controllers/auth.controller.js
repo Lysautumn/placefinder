@@ -12,12 +12,10 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
     }
 
     self.registerUser = (email, password) => {
-        console.log('button to register user clicked');
-
         auth.createUserWithEmailAndPassword(email, password)
             .then(function(firebaseUser) {
                 $location.path('/userView');
-                // Solution to $location not changing the path
+                // Solution to $location not changing the path with Firebase Auth
                 // Found in this thread: https://stackoverflow.com/questions/11784656/angularjs-location-not-changing-the-path
                 $scope.$apply();
             }).catch(function(error) {
@@ -34,10 +32,8 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
     }
 
     self.login = () => {
-        
         let loginEmail = self.loginEmail;
         let loginPassword = self.loginPassword;
-
         auth.signInWithEmailAndPassword(loginEmail, loginPassword)
             .then(function(firebaseUser) {
                 $location.path('/userView')
@@ -53,8 +49,7 @@ angular.module('placeApp').controller('AuthController',['$mdDialog', '$mdToast',
                         .ariaLabel('Password Error Dialog')
                         .ok('Ok')
                 );
-            });
-            
+            }); 
     }
 
     self.logout = () => {

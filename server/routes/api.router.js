@@ -2,11 +2,9 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-let apiRes;
+let apiRes = {};
 
 router.get('/', (req, res) => {
-    console.log('req.query', req.query);
-    
     axios({
         method: 'get',
         url: 'https://api.foursquare.com/v2/venues/explore',
@@ -20,14 +18,11 @@ router.get('/', (req, res) => {
             client_secret: process.env.CLIENT_SECRET
         }
     }).then((response) => {
-        console.log('Response from get', response);
-        console.log('This is the response.data', response.data);
-        
         apiRes = response.data;
         res.send(apiRes);
     }).catch((error) => {
         console.log('There was an error', error);
-        
+        res.sendStatus(500);
     })
 })
 

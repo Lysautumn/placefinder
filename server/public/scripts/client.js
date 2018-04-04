@@ -1,3 +1,4 @@
+// Firebase Config
 let config = {
     apiKey: "AIzaSyDT179hl2SXPtWTMYGqE0EGwyaeoquJxRk",
     authDomain: "placefinder-3aa68.firebaseapp.com",
