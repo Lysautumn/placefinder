@@ -3,12 +3,7 @@ angular.module('placeApp').controller('UserController',['$mdDialog', '$mdToast',
     console.log('User Controller');
     let self = this;
 
-    class Place {
-        constructor(name, address) {
-            this.name = name;
-            this.address = address;
-        }
-    }
+    
 
     self.formatPlaces = Place.formatPlaces;
     // Options available from Foursquare API
