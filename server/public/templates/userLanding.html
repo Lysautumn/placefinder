@@ -18,8 +18,9 @@
 <div flex layout="column" id="searchResults">
     <ul>
         <ul ng-repeat="place in uc.searchResults">
-            <li class="venueName">{{place.venue.name}}</li>
-            <li>{{place.venue.location.address}}</li>
+            <li class="venueName">{{place.name}}</li>
+            <li>{{place.address}}</li>
+            <li><a ng-src={{place.website}} target="_blank">{{place.website}}</a></li>
             <br>
         </ul>
     </ul>
